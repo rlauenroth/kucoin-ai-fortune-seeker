@@ -18,7 +18,7 @@ const data = [
 
 export const TradingChart = () => {
   return (
-    <div className="w-full h-80">
+    <div className="w-full h-64 sm:h-80">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data}>
           <defs>
@@ -32,20 +32,23 @@ export const TradingChart = () => {
             dataKey="time" 
             axisLine={false}
             tickLine={false}
-            tick={{ fill: '#94a3b8', fontSize: 12 }}
+            tick={{ fill: '#94a3b8', fontSize: 10 }}
+            interval="preserveStartEnd"
           />
           <YAxis 
             axisLine={false}
             tickLine={false}
-            tick={{ fill: '#94a3b8', fontSize: 12 }}
+            tick={{ fill: '#94a3b8', fontSize: 10 }}
             tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+            width={40}
           />
           <Tooltip 
             contentStyle={{
               backgroundColor: '#1e293b',
               border: '1px solid #475569',
               borderRadius: '8px',
-              color: '#f1f5f9'
+              color: '#f1f5f9',
+              fontSize: '12px'
             }}
             formatter={(value, name) => [
               `$${Number(value).toLocaleString()}`,
